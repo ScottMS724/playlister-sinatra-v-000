@@ -11,6 +11,7 @@ class Genre < ActiveRecord::Base
 
    def self.find_by_slug(slug)
     @name = slug.split("-").map!{|word| word.capitalize}.join(" ")
+    @name = slug.gsub(' ', '-').upcase
     self.find_by_name(@name)
   end
   
