@@ -9,6 +9,9 @@ class Artist < ActiveRecord::Base
   end 
   
   def self.find_by_slug(slug)
+     @name = slug.split("-").map!{|word| word.capitalize}.join(" ")
+     @name = slug.gsub(' ', '-').upcase
+    
     special = ["with", "the", "a", "or", "and"]
     array = []
     slug.split("-").each do |word|
